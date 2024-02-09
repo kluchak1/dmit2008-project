@@ -6,7 +6,7 @@ const firebaseConfig = {
 	storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
 	messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
 	appId: import.meta.env.VITE_APP_ID,
-	// measurementId: "G-LWM7MERDDH"
-  };
+};
 
 export { firebaseConfig };
+

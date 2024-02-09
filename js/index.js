@@ -1,24 +1,30 @@
-import { getToDoData } from "./lib/firebase/api";
+import { getToDoData } from './lib/firebase/api';
+import { toDoItemTemplate } from './templates/toDoItem';
+import { toElement } from './utils/toElement';
 
-// single source of truth for the data...
+
 let store = [];
-async function appInit() {
-	const toDos = await getToDoData();
-	console.log(toDos);
 
-	// Object.values(toDos).forEach((toDo) => console.log(toDo));
-	// to get the values from the object we use the Object.values(obj) Object.keys(obj) Object.entries(obj)
-	// store = [...Object.values(toDos)];
-	// // Create your own todo data
-	// // find method.
-	// const searchingFor = "-NpB-eTM3CAL9ana07fx";
-	// const keys = Object.keys(toDos);
-	// const item = keys.filter((item) => {
-	// 	if (item === searchingFor) {
-	// 		return item;
-	// 	}
-	// });
-	// console.log(item);
+async function appInit() {
+	const appData = await getToDoData();
+	
+	const toDoItems = Object.values(appData).map((obj) => {
+		return toDoItemTemplate(obj.todo, obj.status, obj.category, obj.start);
+	});
+
+	console.log(toDoItems)
+
+
+	const div = document.createElement('div')
+	toDoItems.forEach((markup) => {
+		div.appendChild(markup)
+	});
+
+	console.log(div)
+	document.querySelector('main').appendChild(div)
+
+	
+	
 }
 
 appInit();

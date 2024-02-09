@@ -4,7 +4,7 @@
 
 */
 
-import { ref, child, get } from "firebase/database";
+import { ref, get } from "firebase/database";
 
 import { db } from "./../../config/firebase/firebaseInit";
 
