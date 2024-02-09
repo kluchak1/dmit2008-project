@@ -12,6 +12,7 @@ async function appInit() {
 		return toDoItemTemplate(obj.todo, obj.status, obj.category, obj.start);
 	});
 
+	toDoItems.splice(1,20)
 	console.log(toDoItems)
 
 
